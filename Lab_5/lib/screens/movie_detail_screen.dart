@@ -37,7 +37,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                     gradient: LinearGradient(
                       colors: [
                         Colors.black.withOpacity(0.6),
-                        Colors.transparent
+                        Colors.transparent,
                       ],
                       begin: Alignment.bottomCenter,
                       end: Alignment.topCenter,
@@ -52,9 +52,13 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(movie.title,
-                      style: const TextStyle(
-                          fontSize: 24, fontWeight: FontWeight.bold)),
+                  Text(
+                    movie.title,
+                    style: const TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
 
                   const SizedBox(height: 10),
 
@@ -70,33 +74,48 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                   Text(movie.overview),
 
                   const SizedBox(height: 20),
-
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      IconButton(
-                        icon: Icon(
-                          isFavorite
-                              ? Icons.favorite
-                              : Icons.favorite_border,
-                          color: Colors.red,
-                        ),
-                        onPressed: () {
-                          setState(() {
-                            isFavorite = !isFavorite;
-                          });
-                        },
+                      Column(
+                        children: [
+                          IconButton(
+                            icon: Icon(
+                              movie.isFavorite
+                                  ? Icons.favorite
+                                  : Icons.favorite_border,
+                              color: Colors.red,
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                movie.isFavorite = !movie.isFavorite;
+                              });
+                            },
+                          ),
+                          const Text('Favorite'),
+                        ],
                       ),
-                      const Icon(Icons.star),
-                      const Icon(Icons.share),
+                      const Column(
+                        children: [
+                          Icon(Icons.star, size: 28),
+                          SizedBox(height: 4),
+                          Text('Rate'),
+                        ],
+                      ),
+                      const Column(
+                        children: [
+                          Icon(Icons.share, size: 28),
+                          SizedBox(height: 4),
+                          Text('Share'),
+                        ],
+                      ),
                     ],
                   ),
 
                   const SizedBox(height: 20),
                   const Text(
                     'Trailers',
-                    style: TextStyle(
-                        fontSize: 20, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
 
                   const SizedBox(height: 10),

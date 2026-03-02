@@ -13,6 +13,7 @@ class Movie {
   final List<String> genres;
   final double rating;
   final List<Trailer> trailers;
+  bool isFavorite;
 
   Movie({
     required this.id,
@@ -22,5 +23,6 @@ class Movie {
     required this.genres,
     required this.rating,
     required this.trailers,
+    this.isFavorite = false,
   });
 }
